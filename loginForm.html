@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+
+    <!-- Tailwind CSS (optional for future enhancements) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine.js for password toggle -->
+    <script src="https://unpkg.com/alpinejs" defer></script>
+
+    <!-- Font Awesome for eye icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- ✅ Custom CSS -->
+    <style>
+      body {
+        background-color: #f3f4f6;
+        font-family: "Segoe UI", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .login-container {
+        background-color: #ffffff;
+        padding: 3rem;
+        border-radius: 2rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        border: 1px solid #e5e7eb;
+      }
+
+      .login-container h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2.25rem;
+        font-weight: bold;
+        color: #1f2937;
+      }
+
+      .login-container label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        font-size: 1.125rem;
+        color: #374151;
+      }
+
+      .login-container input {
+        width: 100%;
+        padding: 1rem 1.25rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid #d1d5db;
+        border-radius: 1rem;
+        box-sizing: border-box;
+        font-size: 1.125rem;
+      }
+
+      .password-wrapper {
+        position: relative;
+      }
+
+      .password-wrapper i {
+        position: absolute;
+        right: 1.25rem;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #6b7280;
+        font-size: 1.25rem;
+      }
+
+      .login-container button {
+        width: 100%;
+        padding: 1rem;
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 1rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .login-container button:hover {
+        background-color: #1d4ed8;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ✅ Login Form -->
+    <div class="login-container" x-data="{ show: false }">
+      <h2>Login</h2>
+
+      <form id="loginForm">
+        <!-- Username -->
+        <div>
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter username" />
+        </div>
+
+        <!-- Password -->
+        <div class="password-wrapper">
+          <label for="password">Password</label>
+          <input
+            :type="show ? 'text' : 'password'"
+            id="password"
+            placeholder="Enter password"
+          />
+          <i class="fa fa-eye" @click="show = !show"></i>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <!-- ✅ JavaScript Validation -->
+    <script>
+      const users = {
+        bond007: "shakenNotStirred",
+        careyann: "creativeSparkle",
+        admin: "admin123",
+      };
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const username = document.getElementById("username").value.trim();
+          const password = document.getElementById("password").value.trim();
+
+          if (users[username] === password) {
+            alert("Welcome, " + username + "!");
+            // You can redirect or show dashboard here
+          } else {
+            alert("Invalid credentials. Try again.");
+          }
+        });
+    </script>
+  </body>
+</html>
