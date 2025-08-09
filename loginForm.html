@@ -5,19 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
 
-    <!-- Tailwind CSS (optional for future enhancements) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Alpine.js for password toggle -->
-    <script src="https://unpkg.com/alpinejs" defer></script>
-
     <!-- Font Awesome for eye icon -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
-    <!-- ✅ Custom CSS -->
     <style>
       body {
         background-color: #f3f4f6;
@@ -98,18 +91,15 @@
     </style>
   </head>
   <body>
-    <!-- ✅ Login Form -->
     <div class="login-container" x-data="{ show: false }">
       <h2>Login</h2>
 
       <form id="loginForm">
-        <!-- Username -->
         <div>
           <label for="username">Username</label>
           <input type="text" id="username" placeholder="Enter username" />
         </div>
 
-        <!-- Password -->
         <div class="password-wrapper">
           <label for="password">Password</label>
           <input
@@ -120,12 +110,10 @@
           <i class="fa fa-eye" @click="show = !show"></i>
         </div>
 
-        <!-- Submit Button -->
         <button type="submit">Login</button>
       </form>
     </div>
 
-    <!-- ✅ JavaScript Validation -->
     <script>
       const users = {
         bond007: "shakenNotStirred",
@@ -143,7 +131,6 @@
 
           if (users[username] === password) {
             alert("Welcome, " + username + "!");
-            // You can redirect or show dashboard here
           } else {
             alert("Invalid credentials. Try again.");
           }
